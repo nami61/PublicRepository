@@ -1,0 +1,23 @@
+{
+    "file" : "data/texture/player_anm.png",
+
+    "frame" : {
+        "width"  : 96,
+        "height" : 96,
+        "cols"   : 2,
+        "rows"   : 2
+    },
+
+    "animations" : {
+        "move" : {
+            "frames"    : [0, 1],
+            "interval"  : 0.075,
+            "loop"      : true
+        },
+        "jump" : {
+          "frames"      : [2, 3],
+          "interval"    : 0.075,
+          "loop"        : true
+      }
+    }
+}

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{55BED679-FC95-467B-8E3B-EEB7A21A5661}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>game</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\dxlib;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dxlib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\dxlib;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dxlib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\aqua\src;src;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DisableSpecificWarnings>4099;4100;26812;6386;26451;6385;26495;</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\aqua\src;src;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DisableSpecificWarnings>4099;4100;26812;6386;26451;6385;26495;</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\aqua\aqua.vcxproj">
+      <Project>{803e42f5-753c-480d-9eed-741f74b7aad7}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\game\game_object\effect_manager\effect\guard\guard.cpp" />
+    <ClCompile Include="src\game\game.cpp" />
+    <ClCompile Include="src\game\game_object\block_manager\block\block.cpp" />
+    <ClCompile Include="src\game\game_object\block_manager\block\blue_block\blue_block.cpp" />
+    <ClCompile Include="src\game\game_object\block_manager\block\green_block\green_block.cpp" />
+    <ClCompile Include="src\game\game_object\block_manager\block\pink_block\pink_block.cpp" />
+    <ClCompile Include="src\game\game_object\block_manager\block\white_block\white_block.cpp" />
+    <ClCompile Include="src\game\game_object\block_manager\block_manager.cpp" />
+    <ClCompile Include="src\game\game_object\controller_stick_operation\controller_stick_operation.cpp" />
+    <ClCompile Include="src\game\game_object\device_common_data\device_common_data.cpp" />
+    <ClCompile Include="src\game\game_object\effect_manager\effect\block_direction\block_direction.cpp" />
+    <ClCompile Include="src\game\game_object\effect_manager\effect\debuff\debuff.cpp" />
+    <ClCompile Include="src\game\game_object\effect_manager\effect\effect.cpp" />
+    <ClCompile Include="src\game\game_object\effect_manager\effect\heal\heal.cpp" />
+    <ClCompile Include="src\game\game_object\effect_manager\effect\vanish\vanish.cpp" />
+    <ClCompile Include="src\game\game_object\effect_manager\effect_manager.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\player_description\player_description.cpp" />
+    <ClCompile Include="src\game\game_object\player_manager\player\blue\blue.cpp" />
+    <ClCompile Include="src\game\game_object\player_manager\player\green\green.cpp" />
+    <ClCompile Include="src\game\game_object\player_manager\player\pink\pink.cpp" />
+    <ClCompile Include="src\game\game_object\player_manager\player\player.cpp" />
+    <ClCompile Include="src\game\game_object\player_manager\player\white\white.cpp" />
+    <ClCompile Include="src\game\game_object\player_manager\player_manager.cpp" />
+    <ClCompile Include="src\game\game_object\round_manager\round_manager.cpp" />
+    <ClCompile Include="src\game\game_object\sound_manager\sound_manager.cpp" />
+    <ClCompile Include="src\game\game_object\translate\translate.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\background\background.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\continue\continue.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\countdown_timer\countdown_timer.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\cursor\cursor.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\health_bar\health_bar.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\player_number\player_number.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\player_prev\player_prev.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\skill_ui\skill_ui.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\ribbon_direction\ribbon_direction.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\select_button\select_button.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\title_logo\title_logo.cpp" />
+    <ClCompile Include="src\game\game_object\ui_component\wait_start\wait_start.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene\game_main_scene\game_main_scene.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene\game_main_scene\result_scene\result_scene.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene\game_main_scene\round_finish\round_finish.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene\scene.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene\title_scene\demo_scene\demo_scene.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene\title_scene\title_scene.cpp" />
+    <ClCompile Include="src\game\scene_manager\scene_manager.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\game\game_object\effect_manager\effect\guard\guard.h" />
+    <ClInclude Include="src\game\game.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block\block.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block\block_id.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block\blue_block\blue_block.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block\green_block\green_block.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block\pink_block\pink_block.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block\white_block\white_block.h" />
+    <ClInclude Include="src\game\game_object\block_manager\block_manager.h" />
+    <ClInclude Include="src\game\game_object\controller_stick_operation\controller_stick_operation.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect\block_direction\block_direction.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect\debuff\debuff.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect\effect.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect\effect_id.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect\heal\heal.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect\vanish\vanish.h" />
+    <ClInclude Include="src\game\game_object\effect_manager\effect_manager.h" />
+    <ClInclude Include="src\game\game_object\device_common_data\device_common_data.h" />
+    <ClInclude Include="src\game\game_object\ui_component\player_description\player_description.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player\blue\blue.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player\green\green.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player\pink\pink.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player\player.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player\player_id.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player\white\white.h" />
+    <ClInclude Include="src\game\game_object\player_manager\player_manager.h" />
+    <ClInclude Include="src\game\game_object\round_manager\round_manager.h" />
+    <ClInclude Include="src\game\game_object\sound_manager\sound_manager.h" />
+    <ClInclude Include="src\game\game_object\translate\translate.h" />
+    <ClInclude Include="src\game\game_object\ui_component\background\background.h" />
+    <ClInclude Include="src\game\game_object\ui_component\continue\continue.h" />
+    <ClInclude Include="src\game\game_object\ui_component\countdown_timer\countdown_timer.h" />
+    <ClInclude Include="src\game\game_object\ui_component\cursor\cursor.h" />
+    <ClInclude Include="src\game\game_object\ui_component\health_bar\health_bar.h" />
+    <ClInclude Include="src\game\game_object\ui_component\player_number\player_number.h" />
+    <ClInclude Include="src\game\game_object\ui_component\player_prev\player_prev.h" />
+    <ClInclude Include="src\game\game_object\ui_component\skill_ui\skill_ui.h" />
+    <ClInclude Include="src\game\game_object\ui_component\ribbon_direction\ribbon_direction.h" />
+    <ClInclude Include="src\game\game_object\ui_component\select_button\select_button.h" />
+    <ClInclude Include="src\game\game_object\ui_component\title_logo\title_logo.h" />
+    <ClInclude Include="src\game\game_object\ui_component\wait_start\wait_start.h" />
+    <ClInclude Include="src\game\scene_manager\scene\game_main_scene\game_main_scene.h" />
+    <ClInclude Include="src\game\scene_manager\scene\game_main_scene\result_scene\result_scene.h" />
+    <ClInclude Include="src\game\scene_manager\scene\game_main_scene\round_finish\round_finish.h" />
+    <ClInclude Include="src\game\scene_manager\scene\scene.h" />
+    <ClInclude Include="src\game\scene_manager\scene\scene_id.h" />
+    <ClInclude Include="src\game\scene_manager\scene\title_scene\demo_scene\demo_scene.h" />
+    <ClInclude Include="src\game\scene_manager\scene\title_scene\title_scene.h" />
+    <ClInclude Include="src\game\scene_manager\scene_manager.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

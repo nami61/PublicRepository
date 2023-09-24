@@ -1,0 +1,5 @@
+gamemain_bgm1・・Cyber_Attack
+gamemain_bgm2・・Future_Bridge
+gamemain_bgm3・・KAMIKAZE_ATTACK
+gamemain_bgm4・・Meteorite
+gamemain_bgm5・・Rock_Beat_2
