@@ -16,7 +16,9 @@
 
 enum class EFFECT_ID
 {
+	COUNTER,
 	DEBUFF,
+	GURAD,
 	VANISH,
 	HEAL,
 };

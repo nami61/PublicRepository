@@ -14,6 +14,8 @@
 #include "player_id.h"
 #include "../../block_manager/block/block_id.h"
 
+class CEffectManager;
+
 /*!
  *  @class      IPlayer
  *
@@ -26,21 +28,21 @@
  *  @version    1.0
  */
 class IPlayer
-	: public aqua::IGameObject
+    : public aqua::IGameObject
 {
 public:
-	/*!
-	 *  @brief      コンストラクタ
-	 *
-	 *  @param[in]  parent  親オブジェクト
-	 *  @param[in]	name	オブジェクト名
-	 */
-	IPlayer(aqua::IGameObject* parent, const std::string& name);
+    /*!
+     *  @brief      コンストラクタ
+     *
+     *  @param[in]  parent  親オブジェクト
+     *  @param[in]	name	オブジェクト名
+     */
+    IPlayer(aqua::IGameObject* parent, const std::string& name);
 
-	/*!
-	 *  @brief      デストラクタ
-	 */
-	~IPlayer(void) = default;
+    /*!
+     *  @brief      デストラクタ
+     */
+    ~IPlayer(void) = default;
 
     /*!
      *  @brief      初期化
@@ -66,6 +68,11 @@ public:
      *   @brief     位置設定
      */
     void        SetPosition(const aqua::CVector2& pos) { m_AnmSprite.position = m_Position = pos; }
+
+    /*!
+    *    @brief     中心位置取得
+    */
+    aqua::CVector2        GetCenterPosition(void) { return m_Position + aqua::CVector2(m_AnmSprite.GetFrameWidth() / 2.0f, m_AnmSprite.GetFrameHeight() / 2.0f); }
   
     /*!
      *   @brief     拡大率設定
@@ -78,6 +85,8 @@ public:
     PLAYER_ID   GetPlayerID(void) { return m_PlayerID; }
 
     void SetPlayerID(PLAYER_ID id) { m_PlayerID = id; }
+
+    void SetDeviceID(aqua::controller::DEVICE_ID device) { m_DeviceID = device; }
 
     bool IsReady(void) { return m_ReadyFlag; }
 
@@ -123,10 +132,12 @@ protected:
     bool m_ReadyFlag;           //! 準備フラグ
     aqua::CAnimationSprite m_AnmSprite;
     aqua::CVector2 m_Position;  //! プレイヤーの位置
+    aqua::controller::DEVICE_ID m_DeviceID;
     PLAYER_ID m_PlayerID;
     STATE m_State;
     bool m_CounterState;
     bool m_PoisonState;
     bool m_GuardState;
     bool m_PoisonAttack;
+    CEffectManager* m_EffectManager;
 };

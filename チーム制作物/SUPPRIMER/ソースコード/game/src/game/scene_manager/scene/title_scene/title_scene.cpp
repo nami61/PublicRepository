@@ -112,22 +112,34 @@ Update(void)
 	if (m_P1DecisionFlag)
 	{
 		if (aqua::controller::Trigger(aqua::controller::DEVICE_ID::P1, aqua::controller::BUTTON_ID::B))
+		{
+			m_ChangeDemoSceneTimer.Reset();
 			m_P1DecisionFlag = false;
+		}
 	}
 	else
 	{
 		if (aqua::controller::Trigger(aqua::controller::DEVICE_ID::P1, aqua::controller::BUTTON_ID::A))
+		{
+			m_ChangeDemoSceneTimer.Reset();
 			m_P1DecisionFlag = true;
+		}
 	}
 	if (m_P2DecisionFlag)
 	{
 		if (aqua::controller::Trigger(aqua::controller::DEVICE_ID::P2, aqua::controller::BUTTON_ID::B))
+		{
+			m_ChangeDemoSceneTimer.Reset();
 			m_P2DecisionFlag = false;
+		}
 	}
 	else
 	{
 		if (aqua::controller::Trigger(aqua::controller::DEVICE_ID::P2, aqua::controller::BUTTON_ID::A))
+		{
+			m_ChangeDemoSceneTimer.Reset();
 			m_P2DecisionFlag = true;
+		}
 	}
 
 	ChangeDrawPlayer();
@@ -198,6 +210,7 @@ void CTitleScene::ChangeDrawPlayer(void)
 			m_CurrentIDP1 = (PLAYER_ID)((int)m_CurrentIDP1 - 1);
 			if ((int)m_CurrentIDP1 < 0)
 				m_CurrentIDP1 = PLAYER_ID::PINK;
+			m_ChangeDemoSceneTimer.Reset();
 		}
 
 		if (controller->StickTriggerLeft(DEVICE_ID::P1, STICK_DIRECTION::RIGHT, m_default_threshold_value))
@@ -205,6 +218,7 @@ void CTitleScene::ChangeDrawPlayer(void)
 			m_CurrentIDP1 = (PLAYER_ID)((int)m_CurrentIDP1 + 1);
 			if ((int)m_CurrentIDP1 >= (int)PLAYER_ID::MAX)
 				m_CurrentIDP1 = PLAYER_ID::WHITE;
+			m_ChangeDemoSceneTimer.Reset();
 		}
 	}
 
@@ -215,6 +229,7 @@ void CTitleScene::ChangeDrawPlayer(void)
 			m_CurrentIDP2 = (PLAYER_ID)((int)m_CurrentIDP2 - 1);
 			if ((int)m_CurrentIDP2 < 0)
 				m_CurrentIDP2 = PLAYER_ID::PINK;
+			m_ChangeDemoSceneTimer.Reset();
 		}
 
 		if (controller->StickTriggerLeft(DEVICE_ID::P2, STICK_DIRECTION::RIGHT, m_default_threshold_value))
@@ -222,6 +237,7 @@ void CTitleScene::ChangeDrawPlayer(void)
 			m_CurrentIDP2 = (PLAYER_ID)((int)m_CurrentIDP2 + 1);
 			if ((int)m_CurrentIDP2 >= (int)PLAYER_ID::MAX)
 				m_CurrentIDP2 = PLAYER_ID::WHITE;
+			m_ChangeDemoSceneTimer.Reset();
 		}
 	}
 }

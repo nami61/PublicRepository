@@ -176,7 +176,9 @@ void CBlockManager::DeleteBlock(std::list<IBlock*>& list, aqua::controller::DEVI
 		for (auto& block : m_DeleteBlockArrayP1)
 		{
 			m_EffectManager->Create(EFFECT_ID::VANISH, block->GetCenterPosition());
-			list.erase(std::find(list.begin(), list.end(), block));
+			auto itr = std::find(list.begin(), list.end(), block);
+			if (itr != list.end())
+				list.erase(itr);
 			block->DeleteObject();
 		}
 	}
@@ -185,7 +187,9 @@ void CBlockManager::DeleteBlock(std::list<IBlock*>& list, aqua::controller::DEVI
 		for (auto& block : m_DeleteBlockArrayP2)
 		{
 			m_EffectManager->Create(EFFECT_ID::VANISH, block->GetCenterPosition());
-			list.erase(std::find(list.begin(), list.end(), block));
+			auto itr = std::find(list.begin(), list.end(), block);
+			if (itr != list.end())
+				list.erase(itr);
 			block->DeleteObject();
 		}
 	}

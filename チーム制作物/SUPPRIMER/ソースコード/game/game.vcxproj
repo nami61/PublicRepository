@@ -98,6 +98,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\game_object\effect_manager\effect\counter\counter.cpp" />
     <ClCompile Include="src\game\game_object\effect_manager\effect\guard\guard.cpp" />
     <ClCompile Include="src\game\game.cpp" />
     <ClCompile Include="src\game\game_object\block_manager\block\block.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\game_object\effect_manager\effect\counter\counter.h" />
     <ClInclude Include="src\game\game_object\effect_manager\effect\guard\guard.h" />
     <ClInclude Include="src\game\game.h" />
     <ClInclude Include="src\game\game_object\block_manager\block\block.h" />

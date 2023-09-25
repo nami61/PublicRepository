@@ -56,6 +56,9 @@ private:
 	static const aqua::CVector2 m_default_p2_max_pos;
 	static const aqua::CVector2 m_default_p1_color_pos;
 	static const aqua::CVector2 m_default_p2_color_pos;
+	static const aqua::CVector2 m_default_p2_total_label_pos;
+	static const aqua::CVector2 m_default_p2_max_label_pos;
+	static const aqua::CVector2 m_default_p2_color_label_pos;
 	static const float m_label_space;
 
 	aqua::CSprite		m_Frame1;

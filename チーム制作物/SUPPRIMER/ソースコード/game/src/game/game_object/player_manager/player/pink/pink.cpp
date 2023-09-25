@@ -13,6 +13,7 @@ CPink::CPink(aqua::IGameObject* parent)
  */
 void CPink::Initialize(void)
 {
+	m_EffectManager = (CEffectManager*)aqua::FindGameObject("EffectManager");
 	m_AnmSprite.Create("data/animation/pink.ass");
 	m_AnmSprite.position = m_Position;
 }

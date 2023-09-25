@@ -61,6 +61,7 @@ IPlayer* CPlayerManager::Create(PLAYER_ID id, aqua::controller::DEVICE_ID device
     }
     player->Initialize();
     player->SetPlayerID(id);
+    player->SetDeviceID(device);
 
     return player;
 }

@@ -13,6 +13,7 @@ CGreen::CGreen(aqua::IGameObject* parent)
  */
 void CGreen::Initialize(void)
 {
+	m_EffectManager = (CEffectManager*)aqua::FindGameObject("EffectManager");
 	m_AnmSprite.Create("data/animation/green.ass");
 	m_AnmSprite.position = m_Position;
 }

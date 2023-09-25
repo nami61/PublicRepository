@@ -17,6 +17,9 @@ const aqua::CVector2 CGameMainScene::m_default_p1_max_pos = aqua::CVector2(50.0f
 const aqua::CVector2 CGameMainScene::m_default_p2_max_pos = aqua::CVector2(1720.0f, 50.0f);
 const aqua::CVector2 CGameMainScene::m_default_p1_color_pos = aqua::CVector2(50.0f, 100.0f);
 const aqua::CVector2 CGameMainScene::m_default_p2_color_pos = aqua::CVector2(1720.0f, 100.0f);
+const aqua::CVector2 CGameMainScene::m_default_p2_total_label_pos = aqua::CVector2(1600.0f,0.0f);
+const aqua::CVector2 CGameMainScene::m_default_p2_max_label_pos = aqua::CVector2(1600.0f, 50.0f);
+const aqua::CVector2 CGameMainScene::m_default_p2_color_label_pos = aqua::CVector2(1600.0f, 100.0f);
 const float CGameMainScene::m_label_space = 100.0f;
 
 // コンストラクタ
@@ -74,11 +77,11 @@ void CGameMainScene::Initialize(void)
 	m_P1MaxSprite.position = m_default_p1_max_pos; m_P2MaxSprite.position = m_default_p2_max_pos;
 	m_P1ColorBonusSprite.position = m_default_p1_color_pos; m_P2ColorBonusSprite.position = m_default_p2_color_pos;
 	m_P1TotalLabel.position = aqua::CVector2(m_default_p1_total_pos.x + ((float)m_P1TotalSprite.GetTextureWidth() * 0.5f) + m_label_space, m_default_p1_total_pos.y + 10.0f);
-	m_P2TotalLabel.position = aqua::CVector2(m_default_p2_total_pos.x - (float)m_P1TotalLabel.GetTextWidth() * 2.0f, m_default_p1_total_pos.y + 10.0f);
+	m_P2TotalLabel.position = m_default_p2_total_label_pos;
 	m_P1MaxLabel.position = aqua::CVector2(m_default_p1_max_pos.x + ((float)m_P1MaxSprite.GetTextureWidth() * 0.5f) + m_label_space, m_default_p1_max_pos.y + 10.0f);
-	m_P2MaxLabel.position = aqua::CVector2(m_default_p2_max_pos.x - (float)m_P1MaxLabel.GetTextWidth() * 2.0f, m_default_p1_max_pos.y + 10.0f);
+	m_P2MaxLabel.position = m_default_p2_max_label_pos;
 	m_P1ColorBonusLabel.position = aqua::CVector2(m_default_p1_color_pos.x + ((float)m_P1ColorBonusSprite.GetTextureWidth() * 0.5f) + m_label_space, m_default_p1_color_pos.y + 10.0f);
-	m_P2ColorBonusLabel.position = aqua::CVector2(m_default_p2_color_pos.x - (float)m_P2ColorBonusLabel.GetTextWidth() * 2.0f, m_default_p2_color_pos.y + 10.0f);
+	m_P2ColorBonusLabel.position = m_default_p2_color_label_pos;
 	aqua::CVector2 scale = aqua::CVector2(0.5f, 0.5f);
 	m_P1TotalSprite.scale = scale; m_P2TotalSprite.scale = scale;
 	m_P1MaxSprite.scale = scale; m_P2MaxSprite.scale = scale;
@@ -159,12 +162,6 @@ void CGameMainScene::Update(void)
 		Push(SCENE_ID::RESULT);
 	}
 
-	m_P1TotalLabel.position = aqua::CVector2(m_default_p1_total_pos.x + ((float)m_P1TotalSprite.GetTextureWidth() * 0.5f) + m_label_space, m_default_p1_total_pos.y + 10.0f);
-	m_P2TotalLabel.position = aqua::CVector2(m_default_p2_total_pos.x - (float)m_P1TotalLabel.GetTextWidth() * 2.0f, m_default_p1_total_pos.y + 10.0f);
-	m_P1MaxLabel.position = aqua::CVector2(m_default_p1_max_pos.x + ((float)m_P1MaxSprite.GetTextureWidth() * 0.5f) + m_label_space, m_default_p1_max_pos.y + 10.0f);
-	m_P2MaxLabel.position = aqua::CVector2(m_default_p2_max_pos.x - (float)m_P1MaxLabel.GetTextWidth() * 2.0f, m_default_p1_max_pos.y + 10.0f);
-	m_P1ColorBonusLabel.position = aqua::CVector2(m_default_p1_color_pos.x + ((float)m_P1ColorBonusSprite.GetTextureWidth() * 0.5f) + m_label_space, m_default_p1_color_pos.y + 10.0f);
-	m_P2ColorBonusLabel.position = aqua::CVector2(m_default_p2_color_pos.x -  (float)m_P2ColorBonusLabel.GetTextWidth() * 2.0f, m_default_p2_color_pos.y + 10.0f);
 	m_P1TotalLabel.text = std::to_string(m_Data->GetTotalVanishedBlocks(aqua::controller::DEVICE_ID::P1));
 	m_P2TotalLabel.text = std::to_string(m_Data->GetTotalVanishedBlocks(aqua::controller::DEVICE_ID::P2));
 	m_P1MaxLabel.text = std::to_string(m_Data->GetMaxVanishedBlocks(aqua::controller::DEVICE_ID::P1));
@@ -195,16 +192,6 @@ void CGameMainScene::Update(void)
 		Push(SCENE_ID::ROUND_FINISH);
 		m_RoundManager->AddRounds();
 		m_RoundManager->ResetTimer();
-	}
-
-	if (aqua::keyboard::Trigger(aqua::keyboard::KEY_ID::N))
-	{
-		Push(SCENE_ID::RESULT);
-		m_SoundManager->Stop(SOUND_ID::GAMEMAIN_BGM1);
-		m_SoundManager->Stop(SOUND_ID::GAMEMAIN_BGM2);
-		m_SoundManager->Stop(SOUND_ID::GAMEMAIN_BGM3);
-		m_SoundManager->Stop(SOUND_ID::GAMEMAIN_BGM4);
-		m_SoundManager->Stop(SOUND_ID::GAMEMAIN_BGM5);
 	}
 
 	m_CursorP1->CheckHitWall(313.0f, 814.0f, 235.0f, 736.0f);

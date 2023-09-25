@@ -1,5 +1,8 @@
-#include "player.h"
 #include "white/white.h"
+#include "blue/blue.h"
+#include "green/green.h"
+#include "pink/pink.h"
+#include "../../effect_manager/effect_manager.h"
 
 const int IPlayer::m_max_life = 500;
 
@@ -18,6 +21,7 @@ IPlayer::IPlayer(aqua::IGameObject* parent, const std::string& name)
 	, m_PoisonState(false)
 	, m_PoisonAttack(false)
 	, m_State(STATE::ACTIVE)
+	, m_EffectManager(nullptr)
 {
 }
 
@@ -67,6 +71,11 @@ void IPlayer::Damage(int damage, bool& poison_attack)
 
 	if (poison_attack)
 	{
+		using namespace aqua::controller;
+		if (m_DeviceID == DEVICE_ID::P1)
+			m_EffectManager->Create(EFFECT_ID::DEBUFF, GetCenterPosition());
+		else if(m_DeviceID == DEVICE_ID::P2)
+			m_EffectManager->Create(EFFECT_ID::DEBUFF, m_Position + aqua::CVector2(0.0f, (float)m_AnmSprite.GetFrameHeight() / 2.0f));
 		m_PoisonState = true;
 		poison_attack = false;
 	}
@@ -127,13 +136,34 @@ int IPlayer::Attack(int blocks, BLOCK_ID b_id, PLAYER_ID p_id)
 	float atk = (float)blocks;
 
 	if (b_id == BLOCK_ID::WHITE)
+	{
 		m_CounterState = true;
+		using namespace aqua::controller;
+		if (m_DeviceID == DEVICE_ID::P1)
+			m_EffectManager->Create(EFFECT_ID::COUNTER, GetCenterPosition());
+		else if (m_DeviceID == DEVICE_ID::P2)
+			m_EffectManager->Create(EFFECT_ID::COUNTER, m_Position + aqua::CVector2(0.0f, (float)m_AnmSprite.GetFrameHeight() / 2.0f));
+	}
 	if (b_id == BLOCK_ID::BLUE)
+	{
 		m_GuardState = true;
+		using namespace aqua::controller;
+		if (m_DeviceID == DEVICE_ID::P1)
+			m_EffectManager->Create(EFFECT_ID::GURAD, GetCenterPosition());
+		else if (m_DeviceID == DEVICE_ID::P2)
+			m_EffectManager->Create(EFFECT_ID::GURAD, m_Position + aqua::CVector2(0.0f, (float)m_AnmSprite.GetFrameHeight() / 2.0f));
+	}
 	if (b_id == BLOCK_ID::GREEN)
 		m_PoisonAttack = true;
 	if (b_id == BLOCK_ID::PINK)
+	{
 		Heal(blocks);
+		using namespace aqua::controller;
+		if (m_DeviceID == DEVICE_ID::P1)
+			m_EffectManager->Create(EFFECT_ID::HEAL, GetCenterPosition());
+		else if (m_DeviceID == DEVICE_ID::P2)
+			m_EffectManager->Create(EFFECT_ID::HEAL, m_Position + aqua::CVector2(0.0f, (float)m_AnmSprite.GetFrameHeight() / 2.0f));
+	}
 
 	if (m_PoisonState && atk != 0)
 	{

@@ -13,6 +13,7 @@ CBlue::CBlue(aqua::IGameObject* parent)
  */
 void CBlue::Initialize(void)
 {
+	m_EffectManager = (CEffectManager*)aqua::FindGameObject("EffectManager");
 	m_AnmSprite.Create("data/animation/blue.ass");
 	m_AnmSprite.position = m_Position;
 }

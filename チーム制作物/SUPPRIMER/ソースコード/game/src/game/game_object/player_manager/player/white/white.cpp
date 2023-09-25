@@ -13,6 +13,7 @@ CWhite::CWhite(aqua::IGameObject* parent)
  */
 void CWhite::Initialize(void)
 {
+	m_EffectManager = (CEffectManager*)aqua::FindGameObject("EffectManager");
 	m_AnmSprite.Create("data/animation/white.ass");
 	m_AnmSprite.position = m_Position;
 }
